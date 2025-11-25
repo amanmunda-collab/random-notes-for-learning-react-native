@@ -1,0 +1,71 @@
+To create an APK file for your Expo project, you should use EAS Build (Expo Application Services). The old command (expo build:android) has been deprecated and no longer works.
+
+Here is the step-by-step guide to generating an installable APK.
+
+Step 1: Install EAS CLI
+First, you need to install the EAS tool globally on your computer. Open your terminal and run:
+
+Bash
+
+npm install -g eas-cli
+Step 2: Log in to Expo
+If you haven't already, log in to your Expo account (create one at expo.dev if you don't have one).
+
+Bash
+
+eas login
+Step 3: Configure the Project
+Run the configuration command inside your project folder.
+
+Bash
+
+eas build:configure
+It will ask: "Which platform(s) would you like to configure?" → Select All or Android.
+
+This creates a file named eas.json in your root directory.
+
+Step 4: Edit eas.json (Crucial Step) ⚙️
+By default, EAS is set up to build an AAB (Android App Bundle) for the Google Play Store. To get an APK (that you can install directly on your phone), you need to modify eas.json.
+
+Open eas.json and modify the build section to look like this:
+
+JSON
+
+{
+  "cli": {
+    "version": ">= 7.0.0"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "android": {
+        "buildType": "apk" 
+      }
+    },
+    "production": {}
+  },
+  "submit": {
+    "production": {}
+  }
+}
+
+What we changed: We added a profile named "preview" and set "buildType": "apk".
+
+Step 5: Run the Build Command 🚀
+Now, run the build command using the profile you just created.
+
+Bash
+
+eas build -p android --profile preview
+What happens next:
+
+Expo will upload your project to their cloud servers.
+
+It might ask you to generate a Keystore. Just say Yes (Y) to let Expo handle it automatically.
+
+You will see a link to track the build progress.
+
+Step 6: Download the APK 📥
