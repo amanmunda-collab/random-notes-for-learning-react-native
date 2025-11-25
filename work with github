@@ -1,0 +1,19 @@
+// if you have a folder , start terminal, make sure you have a git setup  already 
+
+// start terminal and use 
+
+// git init 
+// it initializes a .git file 
+
+// git add . 
+// if you want to reset 
+// git reset     or do git reset "filename"
+
+// now do 
+// git commit -m "feat: initial project setup and file structure"
+// to reset 
+// git reset --soft HEAD~1
+
+// git remote add origin [YOUR_REPOSITORY_LINK]
+
+// git push -u origin main/master
