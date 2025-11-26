@@ -1,0 +1,4 @@
+1. 🟢 What .ok Means
+response.ok is true if the HTTP status code is $\ge 200$ and $< 300$.
+Examples: 200 OK, 201 Created, 204 No Content.
+response.ok is false if the HTTP status code is $\ge 400$.Examples: 400 Bad Request, 404 Not Found, 500 Internal Server Error.
