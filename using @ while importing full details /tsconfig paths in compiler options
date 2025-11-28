@@ -1,0 +1,43 @@
+ @/constant (Alias/Absolute Imports) 🎯
+The @/constant syntax is an example of an Absolute Import that relies on a Path Alias (or path mapping) configured in your project's settings. This is not a standard JavaScript feature but is enabled by build tools.
+
+Usage and Explanation
+What it means: The @ symbol (or another symbol like ~) is mapped to a specific base directory in your project, regardless of where the importing file is located.
+
+When to use it: For imports that reference code in a common, top-level directory like src, constants, lib, or assets.
+
+Why it's used:
+
+Clarity: Imports are short and clean (@/constant instead of ../../../../constant).
+
+Refactoring Ease: If you move the importing file, the import path doesn't have to change.
+
+Example Configuration (e.g., in a tsconfig.json or jsconfig.json)
+To make @/ work, you must tell your compiler/bundler where @/ points to:
+
+JSON
+
+// Example in tsconfig.json (for TypeScript/VS Code)
+{
+  "compilerOptions": {
+    "baseUrl": ".", // Base directory for absolute imports
+    "paths": {
+      "@/*": ["src/*"] // MAPPING: '@/' maps to 'src/' folder
+    }
+  }
+}
+Example Usage
+If the file structure is the same as before, and the alias maps @/ to the src/ folder:
+
+src/ (Base for @/)
+├── components/
+│   └── Header/
+│       └── Header.js (Currently here)
+└── constants/
+    └── index.js
+In Header.js, you can now import from any file under src/ using the alias:
+
+JavaScript
+
+import { API_URL } from '@/constants'; // The path starts from 'src/'
+This makes the import path look the same no matter how deep Header.js is nested.
