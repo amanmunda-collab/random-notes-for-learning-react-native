@@ -1,0 +1,1 @@
+1. use Promise.all() to fetch transactions in parallel. 
