@@ -1,1 +1,2 @@
 1. use Promise.all() to fetch transactions in parallel. 
+2.   use backticks if you want to use expressions inside the strings 
