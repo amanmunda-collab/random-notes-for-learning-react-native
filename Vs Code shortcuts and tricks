@@ -1,3 +1,5 @@
 // How to get suggestions for a particular keyword in VsCode?
 
-// press CTRL + SPACE to get suggestion list 
+/1/ press CTRL + SPACE to get suggestion list 
+/2/ press CTRL  and CLICK to go directly to the function definitionor source 
+
