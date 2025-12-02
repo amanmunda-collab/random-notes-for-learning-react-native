@@ -8,3 +8,14 @@
         password,
       });
 --------------------------------------------------------------
+4. ----------------------------------------------------------------
+Debugging & Tooling
+Remove console.log from Production: While great for development, console.log statements are synchronous and can seriously slow down the JavaScript thread in a bundled app.
+
+Tip: Use a Babel plugin like babel-plugin-transform-remove-console to automatically strip them out of your production build.
+
+Profile Your App: Use the React Native DevTools Profiler (available through the Developer Menu) to identify which components are rendering too often or taking too long. 
+Seeing which components have orange/red bars will tell you exactly where to focus your memoization efforts.
+
+Use the Performance Monitor: Enable the "Perf Monitor" in the Developer Menu to get real-time frames per second (FPS) for both the JS Thread (which runs your React code) and the UI Thread (which handles native UI and animations).
+If your JS FPS drops below 60, you have a performance problem on the JavaScript side.
