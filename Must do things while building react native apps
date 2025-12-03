@@ -54,7 +54,32 @@ const MyScreen = () => (
   </>
 );
 
-----------------------------------------------------------------------------------------------------
+6. ----------------------------------------------------------------------------------------------------
+Use InteractionManager.runAfterInteractions to delay heavy logic (network requests, heavy calculations) until the navigation animation finishes.
+
+
+JavaScript
+
+import { InteractionManager, useEffect, useState } from 'react-native';
+
+const HeavyScreen = () => {
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    // The task inside here won't run until the navigation animation is 100% done
+    const task = InteractionManager.runAfterInteractions(() => {
+      setIsReady(true);
+      // Fire network requests here
+    });
+
+    return () => task.cancel();
+  }, []);
+
+  if (!isReady) return <LoadingPlaceholder />;
+
+  return <ComplexComponent />;
+};
+Why it works: It explicitly prioritizes 60fps animations over data fetching.
 
 
 
